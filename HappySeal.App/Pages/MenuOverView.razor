@@ -1,0 +1,21 @@
+﻿@page "/menuoverview"
+
+
+<h3>MenuOverView</h3>
+
+
+<div class="row">
+    @foreach(var menuItem in Menu.MenueItems)
+    {
+        <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
+                <ErrorBoundary>
+                    <ChildContent>
+                       <MenuItemCard MenuItem="menuItem"></MenuItemCard>
+                    </ChildContent>
+                    <ErrorContent>
+                        <p class="errorUI">Invalid menu!</p>
+                    </ErrorContent>
+                </ErrorBoundary>
+            </div>
+    }
+</div>
