@@ -15,7 +15,7 @@ namespace HappySeal.Shared.Domain
         public string Name { get; set; } = string.Empty;
         public int CookingTime { get; set; }
         public int Spicyness { get; set; }
-        public int difficulty { get; set; }
+        public int Difficulty { get; set; }
         public string Discription { get; set; }
         public string ImageSmall { get; set; }
         public string Image { get; set; }

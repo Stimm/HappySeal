@@ -1,0 +1,11 @@
+﻿@page "/mealdetails/{mealId}"
+
+<section class="employee-detail">
+    <h1 class="page-title">Details for @Meal.Name</h1>
+    <br />
+    <div class="col-12 row">
+        <div class="col-2 text-center">
+            <img src="@($"https://happyseal.blob.core.windows.net/happysealmealimages/{Meal.MealId}.jpg")" class="employee-img rounded-circle img-fluid" />
+        </div>
+    </div>
+</section>

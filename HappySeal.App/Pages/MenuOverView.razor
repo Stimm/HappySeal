@@ -4,13 +4,15 @@
 <h3>MenuOverView</h3>
 
 
+<QuickViewPopup MenuItem="_selectedMenuItem"></QuickViewPopup>
+
 <div class="row">
     @foreach(var menuItem in Menu.MenueItems)
     {
         <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2">
                 <ErrorBoundary>
                     <ChildContent>
-                       <MenuItemCard MenuItem="menuItem"></MenuItemCard>
+                    <MenuItemCard MenuItem="menuItem" MenuItemQuickView="ShowQuickViewPopUp"></MenuItemCard>
                     </ChildContent>
                     <ErrorContent>
                         <p class="errorUI">Invalid menu!</p>

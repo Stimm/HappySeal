@@ -70,7 +70,7 @@ namespace HappySeal.App.Models
                 Name = "gochujang eggplant",
                 CookingTime = 40,
                 Spicyness = 2,
-                difficulty = 2,
+                Difficulty = 2,
                 Discription = "Lightly spicy Korien chilly, soft eggplant side dish",
                 ImageSmall ="",
                 Image = ""
@@ -82,7 +82,7 @@ namespace HappySeal.App.Models
                 Name = "Daddies spaghetti",
                 CookingTime = 80,
                 Spicyness = 1,
-                difficulty = 2,
+                Difficulty = 2,
                 Discription = "Ritch creemy pastasause with bacon, mushrooms and peppers",
                 ImageSmall = "",
                 Image = ""
@@ -94,7 +94,7 @@ namespace HappySeal.App.Models
                 Name = "Auzzy meat pies",
                 CookingTime = 240,
                 Spicyness = 0,
-                difficulty = 3,
+                Difficulty = 3,
                 Discription = "Flaky ritch pie snacks with a deep meaty beef flavor",
                 ImageSmall ="",
                 Image =""

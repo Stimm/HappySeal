@@ -8,5 +8,16 @@ namespace HappySeal.App.Components
         [Parameter]
         public MenuItem MenuItem { get; set; } = default!;
 
+        [Parameter]
+        public EventCallback<MenuItem> MenuItemQuickView { get; set; }
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
+        public void NavagaitToMealDetails(Meal selectedMeal)
+        {
+            NavigationManager.NavigateTo($"/mealdetails/{selectedMeal.MealId}");
+        }
+
     }
 }
