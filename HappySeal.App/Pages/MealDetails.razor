@@ -1,4 +1,4 @@
-﻿@page "/mealdetails/{mealId}"
+﻿@page "/mealdetails/{MealId}"
 
 <section class="employee-detail">
     <h1 class="page-title">Details for @Meal.Name</h1>
@@ -6,6 +6,65 @@
     <div class="col-12 row">
         <div class="col-2 text-center">
             <img src="@($"https://happyseal.blob.core.windows.net/happysealmealimages/{Meal.MealId}.jpg")" class="employee-img rounded-circle img-fluid" />
+        </div>
+        <div class="col-10 row">
+            <div class="col-12 col-xxl-8">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Meal Name</label>
+                    <div class="col-sm-8">
+                        <label type="text" class="form-control-plaintext">@Meal.Name</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Cuisene Type</label>
+                <div class="col-sm-8">
+                    <label type="text" class="form-control-plaintext">@Meal.Cuisene.Name</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">CookingTime</label>
+                <div class="col-sm-8">
+                    <label type="text" class="form-control-plaintext">@Meal.CookingTime minents</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Spicyness</label>
+                <div class="col-sm-8">
+                    <label type="text" class="form-control-plaintext">@Meal.Spicyness</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Discription</label>
+                <div class="col-sm-8">
+                    <label type="text" class="form-control-plaintext">@Meal.Discription</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Instructions</label>
+                <div class="col-sm-8">
+                    <label type="text" class="form-control-plaintext">@Meal.Instructions</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+
+                <label class="col-sm-4 col-form-label">Recipe</label>
+                <div class="col-12 col-xxl-8">
+                @foreach(var component in Meal.Recipe.Components)
+                {
+                        <div class="form-group row">
+                            <div class="col-sm-8">
+                                <label type="text" class="form-control-plaintext">@($"{component.Ingredient.Name}: {component.amount} {component.Measurement}")</label>
+                            </div>
+                        </div>
+                }
+                </div>
+            </div>
         </div>
     </div>
 </section>
