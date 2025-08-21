@@ -10,8 +10,9 @@ namespace HappySeal.Shared.Domain
     {
         public int MenuItemId { get; set; }
         public int MenuId { get; set; }
+        public int MealId { get; set; }
         public Meal Meal { get; set; }
-        public DateTime DateLastUsed { get; set; }
+        public DateTime? DateLastUsed { get; set; }
 
     }
 }

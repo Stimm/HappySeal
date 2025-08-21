@@ -8,7 +8,7 @@ namespace HappySeal.Shared.Domain
 {
     public class Menu
     {
-        public int MenueId{ get; set; }
+        public int MenuId{ get; set; }
         public List<MenuItem> MenueItems{ get; set; } = new List<MenuItem>();
     }
 }
