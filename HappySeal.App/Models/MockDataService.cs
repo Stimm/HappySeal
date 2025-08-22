@@ -37,7 +37,7 @@ namespace HappySeal.App.Models
         {
             Menu menu = new Menu
             {
-                MenueId = 1,
+                MenuId = 1,
                 MenueItems = _menuItems
             };
 
@@ -128,11 +128,11 @@ namespace HappySeal.App.Models
                 Name = "Korean"
             }; var cuisene2 = new Cuisene
             {
-                CuiseneId = 1,
+                CuiseneId = 2,
                 Name = "irish"
             }; var cuisene3 = new Cuisene
             {
-                CuiseneId = 1,
+                CuiseneId = 3,
                 Name = "australian"
             };
 

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappySeal.App", "HappySeal.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappySeal.Shared", "HappySeal.Shared\HappySeal.Shared.csproj", "{9DEC851E-DAD2-407D-A455-25A9B439DB61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HappySeal.Api", "HappySeal.Api\HappySeal.Api.csproj", "{D86E770D-36FD-4481-96B3-A2F99B7EB5FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9DEC851E-DAD2-407D-A455-25A9B439DB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DEC851E-DAD2-407D-A455-25A9B439DB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DEC851E-DAD2-407D-A455-25A9B439DB61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D86E770D-36FD-4481-96B3-A2F99B7EB5FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D86E770D-36FD-4481-96B3-A2F99B7EB5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D86E770D-36FD-4481-96B3-A2F99B7EB5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D86E770D-36FD-4481-96B3-A2F99B7EB5FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
