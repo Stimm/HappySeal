@@ -1,5 +1,4 @@
-﻿using HappySeal.App.Models;
-using HappySeal.App.Services;
+﻿using HappySeal.App.Services;
 using HappySeal.Shared.Domain;
 using Microsoft.AspNetCore.Components;
 
@@ -13,10 +12,10 @@ namespace HappySeal.App.Pages
         [Parameter]
         public string MealId { get; set; }
 
-        public Meal Meal { get; set; }
+        public Meal Meal { get; set; } = new Meal();
 
         protected async override Task OnInitializedAsync()
-        {
+        {         
             Meal = await MealDataService.GetMealById(int.Parse(MealId));
         }
     }

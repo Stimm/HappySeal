@@ -10,7 +10,7 @@ namespace HappySeal.Shared.Domain
     {
         public int RecipeId { get; set; }
         public int MealId { get; set; }
-        
+
         public List<Component> Components { get; set; }
 
     }

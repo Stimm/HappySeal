@@ -19,7 +19,7 @@
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Cuisene Type</label>
                 <div class="col-sm-8">
-                    <label type="text" class="form-control-plaintext">@Meal.Cuisene.Name</label>
+                    <label type="text" class="form-control-plaintext">@Meal.Cuisene?.Name</label>
                 </div>
             </div>
 
@@ -55,16 +55,18 @@
 
                 <label class="col-sm-4 col-form-label">Recipe</label>
                 <div class="col-12 col-xxl-8">
-                @foreach(var component in Meal.Recipe.Components)
-                {
-                        <div class="form-group row">
-                            <div class="col-sm-8">
+                    @if (@Meal.Recipe != null)
+                    {
+                        @foreach (var component in @Meal.Recipe.Components)
+                        {
+                            <div class="form-group row">
+                                <div class="col-sm-8">
                                 <label type="text" class="form-control-plaintext">@($"{component.Ingredient.Name}: {component.amount} {component.Measurement}")</label>
                             </div>
                         </div>
-                }
+                }}
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </section>
