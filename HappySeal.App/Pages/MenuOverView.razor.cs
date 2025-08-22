@@ -9,8 +9,6 @@ namespace HappySeal.App.Pages
     public partial class MenuOverView
     {
         [Inject]
-        public HttpClient _httpClient { get; set; }
-        [Inject]
         public IMenuService? MenuService { get; set; }
 
         public Menu Menu{ get; set; } = default!;
@@ -18,12 +16,7 @@ namespace HappySeal.App.Pages
 
         protected async override Task OnInitializedAsync()
         {
-
             Menu = await MenuService.GetMenuById(1);
-
-            //Menu = await _httpClient.GetFromJsonAsync<Menu>("https://localhost:7117/api/Menu");
-
-            //var test = 1;
         }
 
         public void ShowQuickViewPopUp(MenuItem selectedMenuItem)
