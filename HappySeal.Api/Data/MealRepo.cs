@@ -1,4 +1,5 @@
 ﻿using HappySeal.Shared.Domain;
+using System;
 
 namespace HappySeal.Api.Data
 {
@@ -25,6 +26,14 @@ namespace HappySeal.Api.Data
             }
 
             return results;
+        }
+
+        public void UpdateMeal(Meal meal)
+        {
+            var _mealToUpdate = _appDBContext.Meals.FirstOrDefault(m => m.MealId == meal.MealId);
+
+            _appDBContext.Meals.Entry(_mealToUpdate).CurrentValues.SetValues(meal);
+            _appDBContext.SaveChanges();
         }
     }
 }
