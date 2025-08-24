@@ -1,0 +1,64 @@
+﻿@page "/mealeddit"
+@page "/mealeddit/{MealId}"
+
+<selection class="employee-edit">
+    <h1>
+        <h1 class="page-title">Details for @Meal.Name</h1>
+    </h1>
+
+    <EditForm Model="@Meal" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+        <div class="row mb-3">
+            <label for="name" class="col-form-label col-md-3">Meal Name:</label>
+            <div class="col-md-8">
+                <InputText id="name" class="form-control col-md-8" placeholder ="Please enter the name of the meal" @bind-Value="@Meal.Name"></InputText>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="name" class="col-form-label col-md-3">Cuisene Type:</label>
+            <div class="col-md-8">
+
+                
+                    <InputSelect id="Cuisene" class="form-control col-md-8" placeholder="Select Cuisene" @bind-Value="@Meal.CuiseneId">
+                    @foreach (var Cuisene in Cuisenes)
+                    {
+                        <option value="@Cuisene.CuiseneId">@Cuisene.Name</option>
+                    }
+                </InputSelect>
+            
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="cookingtime" class="col-form-label col-md-3">Meal CookingTime:</label>
+            <div class="col-md-8">
+                <InputNumber id="cookingtime" class="form-control col-md-8" placeholder="Please enter(in minits) the cooking time of the meal" @bind-Value="@Meal.CookingTime"></InputNumber>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="spicyness" class="col-form-label col-md-3">Meal Spicyness:</label>
+            <div class="col-md-8">
+                <InputNumber id="spicyness" class="form-control col-md-8" placeholder="Please enter the level of spice of the meal" @bind-Value="@Meal.Spicyness"></InputNumber>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="Discription" class="col-form-label col-md-3">Meal Discription:</label>
+            <div class="col-md-8">
+                <InputTextArea id="Discription" class="form-control col-md-8" placeholder="Please enter the Discription of the meal" @bind-Value="@Meal.Discription"></InputTextArea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="Instructions" class="col-form-label col-md-3">Meal Instructions:</label>
+            <div class="col-md-8">
+                <InputTextArea id="Instructions" class="form-control col-md-8" placeholder="Please enter the Instructions of the meal" @bind-Value="@Meal.Instructions"></InputTextArea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary me-1">Save employee</button>
+
+
+    </EditForm>
+
+</selection>

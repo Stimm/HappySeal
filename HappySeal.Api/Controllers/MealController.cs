@@ -1,5 +1,7 @@
 ﻿using HappySeal.Api.Data;
+using HappySeal.Shared.Domain;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace HappySeal.Api.Controllers
 {
@@ -19,6 +21,28 @@ namespace HappySeal.Api.Controllers
         public IActionResult GetMealById(int id)
         {
             return Ok(_mealRepo.GetMealById(id));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateMeal(Meal meal)
+        {
+            if(meal == null)
+            {
+                return BadRequest();
+            }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            var mealToUpdate = _mealRepo.GetMealById(meal.MealId);
+            if(mealToUpdate == null)
+            {
+                return BadRequest();
+            }
+
+            _mealRepo.UpdateMeal(meal);
+            return NoContent();
         }
     }
 }

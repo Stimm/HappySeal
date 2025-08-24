@@ -14,4 +14,6 @@ builder.Services.AddHttpClient<IMenuService, MenuService>(client =>
 client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 builder.Services.AddHttpClient<IMealDataService, MealDataService>(client =>
 client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
+builder.Services.AddHttpClient<ICuiseneDataService, CuiseneDataService>(client =>
+client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 await builder.Build().RunAsync();

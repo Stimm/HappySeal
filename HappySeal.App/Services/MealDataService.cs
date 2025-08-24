@@ -1,4 +1,5 @@
 ﻿using HappySeal.Shared.Domain;
+using System.Text;
 using System.Text.Json;
 
 namespace HappySeal.App.Services
@@ -16,6 +17,13 @@ namespace HappySeal.App.Services
         {
             return await JsonSerializer.DeserializeAsync<Meal>
                 (await _httpClient.GetStreamAsync($"api/Meal/{id}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
+        public Task UpdateMeal(Meal meal)
+        {
+            var mealJson = new StringContent(JsonSerializer.Serialize(meal), Encoding.UTF8, "application/json");
+
+            return _httpClient.PutAsync("api/meal", mealJson);
         }
     }
 }
