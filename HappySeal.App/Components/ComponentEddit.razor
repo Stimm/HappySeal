@@ -1,0 +1,41 @@
+﻿@using HappySeal.Shared.Domain
+<h3>IngredientEddit</h3>
+
+    <div class="form-group row">
+    
+        <label class="col-sm-4 col-form-label">Recipe</label>
+        <div class="col-12 col-xxl-8">
+            @if (@Components.Count != 0)
+            {
+                @foreach (var component in Components)
+                {
+                <EditForm Model="@component">
+                    <div class="row mb-3">
+                        <label for="name" class="col-form-label col-md-3">Ingredient:</label>
+                        <div class="col-md-8">
+                            <InputSelect id="Cuisene" class="form-control col-md-8" placeholder="Select Cuisene" @bind-Value="@component.IngredientId">
+                                @foreach (var Ingredient in Ingredients)
+                                {
+                                    <option value="@Ingredient.IngredientId">@Ingredient.Name</option>
+                                }
+                            </InputSelect>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="name" class="col-form-label col-md-3">Amount:</label>
+                        <div class="col-md-8">
+                            <InputNumber id="name" class="form-control col-md-8" placeholder="Please enter the name of the meal" @bind-Value="@component.amount"></InputNumber>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="name" class="col-form-label col-md-3">Measurement:</label>
+                        <div class="col-md-8">
+                            <InputText id="name" class="form-control col-md-8" @bind-Value="@component.Measurement"></InputText>
+                        </div>
+                    </div>
+                </EditForm>
+                }   
+            }
+        </div>
+    </div>
+

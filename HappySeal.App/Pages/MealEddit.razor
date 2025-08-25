@@ -18,8 +18,7 @@
             <label for="name" class="col-form-label col-md-3">Cuisene Type:</label>
             <div class="col-md-8">
 
-                
-                    <InputSelect id="Cuisene" class="form-control col-md-8" placeholder="Select Cuisene" @bind-Value="@Meal.CuiseneId">
+                <InputSelect id="Cuisene" class="form-control col-md-8" placeholder="Select Cuisene" @bind-Value="@Meal.CuiseneId">
                     @foreach (var Cuisene in Cuisenes)
                     {
                         <option value="@Cuisene.CuiseneId">@Cuisene.Name</option>
@@ -58,6 +57,11 @@
         </div>
         <button type="submit" class="btn btn-primary me-1">Save employee</button>
 
+
+        @if (@Components.Count != 0)
+        {
+            <ComponentEddit Components="@Components"></ComponentEddit>
+        } 
 
     </EditForm>
 
