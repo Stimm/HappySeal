@@ -8,6 +8,8 @@ namespace HappySeal.App.Components
     {
         [Inject]
         IIngredientDataService IngredientDataService { get; set; }
+        [Inject]
+        IComponentDataService ComponentDataService { get; set; }
 
         [Parameter]
         public List<Component> Components { get; set; } = new List<Component>();
@@ -17,6 +19,18 @@ namespace HappySeal.App.Components
         protected async override Task OnInitializedAsync()
         {
             Ingredients = await IngredientDataService.GetAllIngredients();
+        }
+
+        protected async Task HandleValidSubmit(Component component)
+        {
+            if (component.ComponentId== 0)
+            {
+                //Create new meal
+            }
+            else
+            {
+                await ComponentDataService.UpdateComponent(component);
+            }
         }
     }
 }

@@ -19,5 +19,10 @@ namespace HappySeal.App.Services
             return await JsonSerializer.DeserializeAsync<List<Ingredient>>
                 (await _httpClient.GetStreamAsync($"api/ingredient"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
+
+        public Task UpdateIngredient(Ingredient ingredient)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
