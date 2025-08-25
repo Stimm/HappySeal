@@ -14,13 +14,15 @@ namespace HappySeal.App.Pages
         ICuiseneDataService CuiseneDataService { get; set; }
 
         [Parameter]
-        public string  MealId { get; set; }
+        public string MealId { get; set; }
         public Meal Meal { get; set; } = new Meal();
         public List<Cuisene> Cuisenes { get; set; } = new List<Cuisene>();
+        public List<Component> Components { get; set; } = new List<Component>();
         protected async override Task OnInitializedAsync()
         {
             Meal = await MealDataService.GetMealById(int.Parse(MealId));
             Cuisenes = (await CuiseneDataService.GetAllCuisenes()).ToList();
+            Components = Meal.Recipe.Components;
         }
 
         protected async Task HandleValidSubmit()
