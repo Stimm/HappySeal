@@ -19,7 +19,7 @@ namespace HappySeal.Api.Controllers
         [HttpPut]
         public IActionResult UpdateComponent([FromBody] Component component)
         {
-            if(component == null)
+            if (component == null)
             {
                 return BadRequest();
             }
@@ -30,13 +30,28 @@ namespace HappySeal.Api.Controllers
 
             var componentToUpdate = _componentRepo.GetComponentById(component.ComponentId);
 
-            if(componentToUpdate == null)
+            if (componentToUpdate == null)
             {
                 return BadRequest();
             }
 
             _componentRepo.UpdateComponentRepo(component);
             return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteComponent(int id)
+        {
+            var componentToDelete = _componentRepo.GetComponentById(id);
+
+            if(componentToDelete == null)
+            {
+                return BadRequest();
+            }
+
+            _componentRepo.DeleteComponent(id);
+
+            return Ok();
         }
     }
 }

@@ -13,6 +13,12 @@ namespace HappySeal.App.Services
             _httpClient = httpClient;
         }
 
+        public async Task<HttpResponseMessage> DeleteComponent(int id)
+        {
+             var result = _httpClient.DeleteAsync($"api/component/{id}").Result;
+             return result;
+        }
+
         public Task UpdateComponent(Component component)
         {
             var componentJson = new StringContent(JsonSerializer.Serialize(component), Encoding.UTF8, "application/json");

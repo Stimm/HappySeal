@@ -23,14 +23,19 @@ namespace HappySeal.App.Components
 
         protected async Task HandleValidSubmit(Component component)
         {
-            if (component.ComponentId== 0)
-            {
-                //Create new meal
-            }
-            else
+            if (component.ComponentId != 0)
             {
                 await ComponentDataService.UpdateComponent(component);
             }
+        }
+
+        public async Task RemoveComponent(Component component)
+        {
+            if(component.ComponentId != 0)
+            {
+                var result = ComponentDataService.DeleteComponent(component.ComponentId);
+            }
+            Components.Remove(component);
         }
     }
 }

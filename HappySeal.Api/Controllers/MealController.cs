@@ -24,7 +24,7 @@ namespace HappySeal.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateMeal(Meal meal)
+        public IActionResult UpdateMeal([FromBody] Meal meal)
         {
             if(meal == null)
             {

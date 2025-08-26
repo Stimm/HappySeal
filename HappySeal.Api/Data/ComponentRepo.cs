@@ -11,6 +11,17 @@ namespace HappySeal.Api.Data
             _dbContext = dbContext;
         }
 
+        public void DeleteComponent(int id)
+        {
+            var componentToRemove = _dbContext.Components.SingleOrDefault(c => c.ComponentId == id);
+
+            if(componentToRemove != null)
+            {
+                _dbContext.Components.Remove(componentToRemove);
+            }
+            _dbContext.SaveChanges();
+        }
+
         public Component GetComponentById(int id)
         {
             return _dbContext.Components.FirstOrDefault(c => c.ComponentId == id);

@@ -33,6 +33,15 @@ namespace HappySeal.Api.Data
             var _mealToUpdate = _appDBContext.Meals.FirstOrDefault(m => m.MealId == meal.MealId);
 
             _appDBContext.Meals.Entry(_mealToUpdate).CurrentValues.SetValues(meal);
+
+            List<Component> ListOfNewComponents = meal.Recipe.Components.Where(c => c.ComponentId == 0).ToList();
+
+            foreach (var component in ListOfNewComponents)
+            {
+                component.RecipeId = meal.Recipe.RecipeId;
+                _appDBContext.Components.Add(component);
+            }
+
             _appDBContext.SaveChanges();
         }
     }
