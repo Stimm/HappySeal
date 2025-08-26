@@ -55,13 +55,19 @@
                 <InputTextArea id="Instructions" class="form-control col-md-8" placeholder="Please enter the Instructions of the meal" @bind-Value="@Meal.Instructions"></InputTextArea>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary me-1">Save employee</button>
-
 
         @if (@Components.Count != 0)
         {
-            <ComponentEddit Components="@Components"></ComponentEddit>
+             <div class="row mb-3">
+                <div class="col-md-5">
+                    <ComponentEddit Components="@Components"></ComponentEddit>
+                </div>
+            </div>
         } 
+        <button type="button" class="btn btn-primary me-1" @onclick="AddNewComponent">Add Component</button>
+
+        <button type="submit" class="btn btn-primary me-1">Save Meal</button>
+
 
     </EditForm>
 

@@ -1,30 +1,35 @@
 ﻿@using HappySeal.Shared.Domain
 
-    <div class="form-group row">
-    
-        <label class="col-sm-4 col-form-label">Recipe</label>
-        <div class="col-6 col-xxl-4">
+<div class="form-group row">
 
-            @if (@Components.Count != 0)
-            {
-                @foreach (var component in Components)
-                {
-                <EditForm Model="@component" OnValidSubmit="@(() => HandleValidSubmit(component))">
-                        <div class="form-control">
-                            <InputSelect id="Cuisene" placeholder="Select Cuisene" @bind-Value="@component.IngredientId">
-                                @foreach (var Ingredient in Ingredients)
-                                {
-                                    <option value="@Ingredient.IngredientId">@Ingredient.Name</option>
-                                }
-                            </InputSelect>
+    <label class="col-sm-4 col-form-label">Recipe</label>
 
-                            <InputNumber id="name" placeholder="Please enter the name of the meal" @bind-Value="@component.amount"></InputNumber>
 
-                            <InputText id="name" @bind-Value="@component.Measurement"></InputText>
-                            <button type="submit" class="btn btn-primary me-1">Update Component</button>
-                        </div>
+    @if (@Components.Count != 0)
+    {
+        @foreach (var component in Components)
+        {
+            <EditForm Model="@component" OnValidSubmit="@(() => HandleValidSubmit(component))">
+                <div class="form-control">
+                    <InputSelect id="Cuisene" placeholder="Select Cuisene" @bind-Value="@component.IngredientId">
+                        @foreach (var Ingredient in Ingredients)
+                        {
+                            <option value="@Ingredient.IngredientId">@Ingredient.Name</option>
+                        }
+                    </InputSelect>
+
+                    <InputNumber id="name" placeholder="Please enter the name of the meal" @bind-Value="@component.amount"></InputNumber>
+
+                    <InputText id="name" @bind-Value="@component.Measurement"></InputText>
+                    @if (component.ComponentId != 0)
+                    {
+                        <button type="submit" class="btn btn-primary me-1">Update Component</button>
+                    }
+                    <button type="button" @onclick="@(() => RemoveComponent(component))" class="btn btn-danger me-1">x</button>
+
+                </div>
                 </EditForm>
                 }   
             }
-        </div>
+
     </div>

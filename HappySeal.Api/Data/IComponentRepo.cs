@@ -7,5 +7,7 @@ namespace HappySeal.Api.Data
         void UpdateComponentRepo(Component component);
 
         Component GetComponentById(int id);
+
+        void DeleteComponent(int id);
     }
 }

@@ -13,6 +13,7 @@ namespace HappySeal.App.Pages
         [Inject]
         ICuiseneDataService CuiseneDataService { get; set; }
 
+
         [Parameter]
         public string MealId { get; set; }
         public Meal Meal { get; set; } = new Meal();
@@ -34,12 +35,19 @@ namespace HappySeal.App.Pages
             else
             {
                 await MealDataService.UpdateMeal(Meal);
+                Meal = await MealDataService.GetMealById(int.Parse(MealId));
+                Components = Meal.Recipe.Components;
             }
         }
 
         protected async Task HandleInvalidSubmit()
         {
 
+        }
+
+        private void AddNewComponent()
+        {
+            Components.Add(new Component());
         }
     }
 }
