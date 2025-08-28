@@ -94,6 +94,7 @@ namespace HappySeal.Api.Data
             foreach (var component in ListOfNewComponents)
             {
                 component.RecipeId = meal.Recipe.RecipeId;
+                component.Ingredient = _appDBContext.Ingredients.Where(i => i.IngredientId == component.IngredientId).FirstOrDefault();
                 _appDBContext.Components.Add(component);
             }
 

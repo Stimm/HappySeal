@@ -56,7 +56,7 @@ namespace HappySeal.App.Services
         public async Task<HttpResponseMessage>? DeleteMeal(int id)
         {
             var result = await _httpClient.DeleteAsync($"api/meal/{id}");
-            
+
             return result;
         }
     }
