@@ -17,6 +17,12 @@ namespace HappySeal.Api.Controllers
             _mealRepo = mealRepo;
         }
 
+        [HttpGet]
+        public IActionResult GetAllMeals()
+        {
+            return Ok(_mealRepo.GetAllMeals());
+        }
+
 
         [HttpGet("{id}")]
         public ActionResult<Meal> GetMealById(int id)
@@ -59,6 +65,20 @@ namespace HappySeal.Api.Controllers
 
             _mealRepo.UpdateMeal(meal);
             return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteMeal(int id)
+        {
+            var mealToDelete = _mealRepo.GetMealById(id);
+
+            if(mealToDelete == null)
+            {
+                return BadRequest();
+            }
+
+            _mealRepo.DeleteMeal(id);
+            return Ok();
         }
     }
 }

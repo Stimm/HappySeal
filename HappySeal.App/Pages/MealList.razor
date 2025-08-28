@@ -1,0 +1,8 @@
+﻿@page "/meallist"
+
+@if(Meals.Count != 0){
+    @foreach(var meal in Meals)
+    {
+        <div>@meal.MealId @meal.Name  <button type="button" @onclick="@(() => RemoveMeal(meal))" class="btn btn-danger me-1">x</button></div>
+    }
+}

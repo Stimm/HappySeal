@@ -50,6 +50,23 @@ namespace HappySeal.Api.Data
             return newMeal;
         }
 
+        public void DeleteMeal(int id)
+        {
+            var recipeToDelete = _appDBContext.Recipes.Where(r => r.MealId == id).FirstOrDefault();
+            var componentsToDelete = _appDBContext.Components.Where(c => c.RecipeId == recipeToDelete.RecipeId);
+            var mealToDelete = _appDBContext.Meals.Where(m => m.MealId == id).FirstOrDefault();
+
+            _appDBContext.Remove(recipeToDelete);
+            _appDBContext.RemoveRange(componentsToDelete);
+            _appDBContext.Remove(mealToDelete);
+            _appDBContext.SaveChanges();
+        }
+
+        public IEnumerable<Meal> GetAllMeals()
+        {
+            return _appDBContext.Meals;
+        }
+
         public Meal GetMealById(int id)
         {
             var results = _appDBContext.Meals.Where(m => m.MealId == id).FirstOrDefault();

@@ -42,12 +42,12 @@ namespace HappySeal.Api.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteComponent(int id)
         {
-            var componentToDelete = _componentRepo.GetComponentById(id);
+                var componentToDelete = _componentRepo.GetComponentById(id);
 
-            if(componentToDelete == null)
-            {
-                return BadRequest();
-            }
+                if(componentToDelete == null)
+                {
+                    return BadRequest();
+                }
 
             _componentRepo.DeleteComponent(id);
 
