@@ -5,14 +5,15 @@
     <label class="col-sm-4 col-form-label">Recipe</label>
 
 
-    @if (@Components.Count != 0)
-    {
+ 
         @foreach (var component in Components)
         {
             <EditForm Model="@component" OnValidSubmit="@(() => HandleValidSubmit(component))">
                 <div class="form-control">
-                    <InputSelect id="Cuisene" placeholder="Select Cuisene" @bind-Value="@component.IngredientId">
-                        @foreach (var Ingredient in Ingredients)
+                <InputSelect id="Ingredient" placeholder="Select Cuisene" @bind-Value="@component.IngredientId">
+                        
+                    
+                    @foreach (var Ingredient in Ingredients)
                         {
                             <option value="@Ingredient.IngredientId">@Ingredient.Name</option>
                         }
@@ -30,6 +31,6 @@
                 </div>
                 </EditForm>
                 }   
-            }
+            
 
     </div>

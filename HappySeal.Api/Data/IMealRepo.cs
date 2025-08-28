@@ -6,5 +6,6 @@ namespace HappySeal.Api.Data
     {
         Meal GetMealById(int id);
         void UpdateMeal(Meal meal);
+        Meal CreateMeal(Meal meal);
     }
 }

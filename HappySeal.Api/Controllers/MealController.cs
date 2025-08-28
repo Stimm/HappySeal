@@ -1,5 +1,6 @@
 ﻿using HappySeal.Api.Data;
 using HappySeal.Shared.Domain;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -18,10 +19,25 @@ namespace HappySeal.Api.Controllers
 
 
         [HttpGet("{id}")]
-        public IActionResult GetMealById(int id)
+        public ActionResult<Meal> GetMealById(int id)
         {
             return Ok(_mealRepo.GetMealById(id));
         }
+
+        [HttpPost]
+        public ActionResult<Meal> CreateMeal([FromBody] Meal meal)
+        {
+            if (meal == null)
+                return BadRequest();
+
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var createdMeal = _mealRepo.CreateMeal(meal);
+            return CreatedAtAction(nameof(GetMealById), new { id = createdMeal.MealId }, createdMeal); 
+        }
+
 
         [HttpPut]
         public IActionResult UpdateMeal([FromBody] Meal meal)

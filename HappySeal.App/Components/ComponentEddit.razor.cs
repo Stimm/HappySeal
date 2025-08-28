@@ -12,13 +12,17 @@ namespace HappySeal.App.Components
         IComponentDataService ComponentDataService { get; set; }
 
         [Parameter]
-        public List<Component> Components { get; set; } = new List<Component>();
+        public List<Component> Components { get; set; } 
 
         public List<Ingredient> Ingredients { get; set; } = new List<Ingredient>();
 
         protected async override Task OnInitializedAsync()
         {
             Ingredients = await IngredientDataService.GetAllIngredients();
+            if (Components[0].ComponentId == 0)
+            {
+                Components[0].IngredientId = Ingredients[0].IngredientId;
+            }
         }
 
         protected async Task HandleValidSubmit(Component component)

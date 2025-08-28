@@ -13,31 +13,43 @@ namespace HappySeal.App.Pages
         [Inject]
         ICuiseneDataService CuiseneDataService { get; set; }
 
-
         [Parameter]
         public string MealId { get; set; }
-        public Meal Meal { get; set; } = new Meal();
+        public Meal? Meal { get; set; } = new Meal();
         public List<Cuisene> Cuisenes { get; set; } = new List<Cuisene>();
         public List<Component> Components { get; set; } = new List<Component>();
         protected async override Task OnInitializedAsync()
         {
-            Meal = await MealDataService.GetMealById(int.Parse(MealId));
             Cuisenes = (await CuiseneDataService.GetAllCuisenes()).ToList();
-            Components = Meal.Recipe.Components;
+
+            if (MealId != null)
+            {
+                Meal = await MealDataService.GetMealById(int.Parse(MealId));
+                Components = Meal.Recipe.Components;
+            }
+            else
+            {
+                Meal.Cuisene = new Cuisene();
+                Meal.CuiseneId = Cuisenes[0].CuiseneId;
+                Meal.Recipe = new Recipe();
+                Meal.Recipe.Components = Components;
+
+            }
         }
 
         protected async Task HandleValidSubmit()
         {
             if(Meal.MealId == 0)
-            {
-                //Create new meal
+            {                
+                Meal = await MealDataService.CreateMeal(Meal);
             }
             else
             {
                 await MealDataService.UpdateMeal(Meal);
                 Meal = await MealDataService.GetMealById(int.Parse(MealId));
-                Components = Meal.Recipe.Components;
+                
             }
+            Components = Meal.Recipe.Components;
         }
 
         protected async Task HandleInvalidSubmit()
@@ -47,7 +59,7 @@ namespace HappySeal.App.Pages
 
         private void AddNewComponent()
         {
-            Components.Add(new Component());
+            Components.Add(new Component() {Ingredient = new Ingredient() });
         }
     }
 }

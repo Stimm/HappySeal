@@ -15,7 +15,7 @@ namespace HappySeal.Shared.Domain
         public int CuiseneId { get; set; }
         public Cuisene Cuisene { get; set; }
         //[Required]
-        public string Instructions { get; set; }
+        public string Instructions { get; set; } = string.Empty;
         [Required]
         [StringLength(60, ErrorMessage = "First Name can't exceed 50 characters")]
         public string Name { get; set; } = string.Empty;
@@ -25,10 +25,10 @@ namespace HappySeal.Shared.Domain
         public int Spicyness { get; set; }
         [Required]
         public int Difficulty { get; set; }
-        [Required]
-        public string Discription { get; set; }
-        public string ImageSmall { get; set; }
-        public string Image { get; set; }
+        
+        public string Discription { get; set; } = string.Empty;
+        public string ImageSmall { get; set; } = string.Empty;
+        public string Image { get; set; } = string.Empty;
         public Recipe Recipe { get; set; }
     }
 }
