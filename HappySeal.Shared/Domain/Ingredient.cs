@@ -10,7 +10,6 @@ namespace HappySeal.Shared.Domain
     public class Ingredient
     {
         public int IngredientId { get; set; }
-        [Required]
         [StringLength(60, ErrorMessage = "First Name can't exceed 50 characters")]
         public string Name { get; set; } = string.Empty;
     }

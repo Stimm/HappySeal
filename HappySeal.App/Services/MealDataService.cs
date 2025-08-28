@@ -25,5 +25,29 @@ namespace HappySeal.App.Services
 
             return _httpClient.PutAsync("api/meal", mealJson);
         }
+
+        public async Task<Meal> CreateMeal(Meal meal)
+        {
+            //var otherMeal = await JsonSerializer.DeserializeAsync<Meal>
+            //    (await _httpClient.GetStreamAsync($"api/Meal/{1}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            //otherMeal.Discription = string.Empty;
+
+            var mealJson = (new StringContent(JsonSerializer.Serialize(meal), Encoding.UTF8,
+                "application/json"));
+
+            var response = await _httpClient.PostAsync($"api/meal", mealJson);
+            response.EnsureSuccessStatusCode();
+
+            var responseStream = await response.Content.ReadAsStreamAsync();
+
+            var createdMeal = await JsonSerializer.DeserializeAsync<Meal>(responseStream, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true // This option handles JSON properties being case-insensitive
+            });
+
+
+            
+            return createdMeal;
+        }
     }
 }

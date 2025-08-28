@@ -50,6 +50,13 @@
         </div>
 
         <div class="row mb-3">
+            <label for="difficulty" class="col-form-label col-md-3">Meal Difficulty:</label>
+            <div class="col-md-8">
+                <InputNumber id="difficulty" class="form-control col-md-8" placeholder="Please enter difficulty time of the meal" @bind-Value="@Meal.Difficulty"></InputNumber>
+            </div>
+        </div>
+
+        <div class="row mb-3">
             <label for="Instructions" class="col-form-label col-md-3">Meal Instructions:</label>
             <div class="col-md-8">
                 <InputTextArea id="Instructions" class="form-control col-md-8" placeholder="Please enter the Instructions of the meal" @bind-Value="@Meal.Instructions"></InputTextArea>

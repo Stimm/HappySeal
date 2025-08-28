@@ -6,5 +6,6 @@ namespace HappySeal.App.Services
     {
         Task<Meal> GetMealById(int id);
         Task UpdateMeal(Meal meal);
+        Task<Meal> CreateMeal(Meal meal);
     }
 }

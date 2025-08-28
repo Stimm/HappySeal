@@ -1,4 +1,5 @@
 ﻿using HappySeal.Shared.Domain;
+using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace HappySeal.Api.Data
@@ -10,6 +11,43 @@ namespace HappySeal.Api.Data
         public MealRepo(AppDBContext appDBContext)
         {
             _appDBContext = appDBContext;
+        }
+
+        public Meal CreateMeal(Meal meal)
+        {
+            var components = meal.Recipe.Components;
+
+            var newMeal = meal;
+            newMeal.Cuisene = _appDBContext.Cuisenes.Where(c => c.CuiseneId == newMeal.CuiseneId).FirstOrDefault();
+
+            var newRecipe = new Recipe();
+
+            var newComponentList = new List<Component>();
+            foreach(var component in components)
+            {
+                var newComponent = new Component();
+                newComponent.amount = component.amount;
+                newComponent.IngredientId = component.IngredientId;
+                newComponent.Measurement = component.Measurement;
+                newComponent.Ingredient = _appDBContext.Ingredients.Where(i => i.IngredientId == component.IngredientId).FirstOrDefault();
+                newComponentList.Add(newComponent);
+            }
+            newRecipe.Components = newComponentList;
+            newMeal.Recipe = newRecipe;
+
+            _appDBContext.Meals.Add(newMeal);
+            
+            newMeal.Recipe.MealId = newMeal.MealId;
+            _appDBContext.Recipes.Add(newRecipe);
+
+            foreach (var component in newComponentList)
+            {
+                component.RecipeId = newRecipe.RecipeId;
+                _appDBContext.Components.Add(component);
+            }
+            _appDBContext.SaveChanges();
+
+            return newMeal;
         }
 
         public Meal GetMealById(int id)
