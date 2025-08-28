@@ -19,5 +19,11 @@ namespace HappySeal.App.Services
 
             return result;
         }
+
+        public async Task<List<Menu>> GetAllMenus()
+        {
+            return await JsonSerializer.DeserializeAsync<List<Menu>>
+                (await _httpClient.GetStreamAsync($"api/Menu"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
     }
 }

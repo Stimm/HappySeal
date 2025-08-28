@@ -44,10 +44,20 @@ namespace HappySeal.App.Services
             {
                 PropertyNameCaseInsensitive = true // This option handles JSON properties being case-insensitive
             });
-
-
-            
             return createdMeal;
+        }
+
+        public async Task<List<Meal>> GetAllMeals()
+        {
+            return await JsonSerializer.DeserializeAsync<List<Meal>>
+                (await _httpClient.GetStreamAsync($"api/meal"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+
+        public async Task<HttpResponseMessage>? DeleteMeal(int id)
+        {
+            var result = await _httpClient.DeleteAsync($"api/meal/{id}");
+            
+            return result;
         }
     }
 }
